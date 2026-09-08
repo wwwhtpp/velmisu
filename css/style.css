@@ -781,13 +781,18 @@ input {
 .product-gallery-slide {
   flex: 0 0 100%;
   height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
 }
 
 .product-gallery-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  /* Keep every product photo at the same, calmer visual scale. */
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
   display: block;
+  border-radius: calc(var(--radius-lg) - 0.5rem);
 }
 
 .gallery-nav {
