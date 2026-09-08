@@ -23,7 +23,7 @@ const products = [
     description: 'La recette originale italienne — mascarpone crémeux, espresso intense et cacao amer.',
     tag: 'Best-seller',
     available: true,
-    images: ['IMG_cacao.JPG', 'IMG_cacao.jpg', 'img_cacao.jpg'],
+    images: ['img_cacao.jpg'],
     sizes: {
       small:  { price: 30,  available: true },
       medium: { price: 45,  available: true },
@@ -37,7 +37,7 @@ const products = [
     description: 'Biscuits Lotus caramélisés, crème vanillée et touche de spéculoos maison.',
     tag: 'Gourmand',
     available: true,
-    images: ['IMG_lotus.JPG', 'img_lotus.jpg', 'img_lotus.jpg'],
+    images: ['img_lotus.jpg'],
     sizes: {
       small:  { price: 35,  available: true },
       medium: { price: 48,  available: true },
@@ -60,26 +60,12 @@ const products = [
     },
   },
   {
-    id: 'lemon-cocoa',
-    name: 'Citron & Cacao',
-    description: 'L\'équilibre parfait entre la fraîcheur du citron et l\'intensité du cacao — une création unique Velmisu.',
-    tag: 'Signature',
-    available: true,
-    images: ['IMG_cacao.jpg', 'IMG_cacao.JPG', 'img_cacao.jpg'],
-    sizes: {
-      small:  { price: 35,  available: true },
-      medium: { price: 48,  available: true },
-      large:  { price: 68,  available: true },
-      xlarge: { price: 98,  available: true },
-    },
-  },
-  {
     id: 'chocolate',
     name: 'Chocolat',
     description: 'Chocolat noir 70%, ganache onctueuse et double dose de cacao pour les amateurs.',
     tag: 'Intense',
     available: true,
-    images: ['IMG_7097.JPG', 'images/chocolate-medium.jpg', 'design-logo.png'],
+    images: ['img_cacao.jpg'],
     sizes: {
       small:  { price: 35,  available: true },
       medium: { price: 200, available: true },
@@ -195,7 +181,6 @@ const customOrderModalClose = document.getElementById('customOrderModalClose');
 const customOrderForm = document.getElementById('customOrderForm');
 const customOrderOccasion = document.getElementById('customOrderOccasion');
 const customOrderBirthdayError = document.getElementById('customOrderBirthdayError');
-const customOrderImage = document.getElementById('customOrderImage');
 
 let selectedProduct = null;
 let cart = loadCart();
@@ -279,11 +264,6 @@ function renderProductCard(product) {
     </div>
   `).join('');
 
-  const galleryDots = product.images.map((_, i) => `
-    <button type="button" class="gallery-dot${i === 0 ? ' active' : ''}" data-slide="${i}"
-      aria-label="Photo ${i + 1}"></button>
-  `).join('');
-
   const formatButtons = sizes.map((size) => {
     const available = isVariantAvailable(product.id, size.id);
     const active = size.id === defaultSizeId;
@@ -305,13 +285,6 @@ function renderProductCard(product) {
             ${gallerySlides}
           </div>
         </div>
-        <button type="button" class="gallery-nav gallery-prev" aria-label="Photo précédente">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button type="button" class="gallery-nav gallery-next" aria-label="Photo suivante">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-        <div class="gallery-dots">${galleryDots}</div>
       </div>
       <div class="product-card-body">
         ${tagHtml}
@@ -473,10 +446,6 @@ function buildCustomOrderMessage(data) {
     `Contact (${data.contactMethod}): ${data.contact}`,
   ];
 
-  if (data.imageName) {
-    lines.push('', `Image d'inspiration: ${data.imageName} (à joindre dans WhatsApp)`);
-  }
-
   lines.push('', '━━━━━━━━━━━━━━━━');
   return lines.join('\n');
 }
@@ -504,7 +473,6 @@ function initCustomOrder() {
     const details = document.getElementById('customOrderDetails').value.trim();
     const contactMethod = document.getElementById('customOrderContactMethod').value;
     const contact = document.getElementById('customOrderContact').value.trim();
-    const imageName = customOrderImage.files[0]?.name || '';
 
     if (isBirthdayOccasion(occasion)) {
       customOrderBirthdayError.hidden = false;
@@ -519,7 +487,6 @@ function initCustomOrder() {
       details,
       contactMethod,
       contact,
-      imageName,
     });
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
