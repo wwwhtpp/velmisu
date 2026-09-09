@@ -3,7 +3,7 @@
    Edit products below (name, description, images, prices)
    ============================================= */
 
-const WHATSAPP_NUMBER = '212650527938';
+const WHATSAPP_NUMBER = '212660131996';
 const CART_STORAGE_KEY = 'velmisu_cart';
 
 // ── FORMAT LABELS ─────────────────────────────
