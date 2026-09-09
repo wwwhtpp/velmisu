@@ -157,6 +157,7 @@ const modalCartSummary = document.getElementById('modalCartSummary');
 const orderProductId = document.getElementById('orderProductId');
 const orderMode = document.getElementById('orderMode');
 const orderQty = document.getElementById('orderQty');
+const orderRequestedDate = document.getElementById('orderRequestedDate');
 const qtyMinus = document.getElementById('qtyMinus');
 const qtyPlus = document.getElementById('qtyPlus');
 const qtyFormGroup = orderQty.closest('.form-group');
@@ -685,7 +686,7 @@ qtyPlus.addEventListener('click', () => {
 });
 
 // ── WhatsApp Order ────────────────────────────
-function buildWhatsAppMessage(variant, quantity, name, address, phone) {
+function buildWhatsAppMessage(variant, quantity, name, address, phone, requestedDate) {
   const total = variant.price * quantity;
 
   return [
@@ -705,13 +706,14 @@ function buildWhatsAppMessage(variant, quantity, name, address, phone) {
     `nom: ${name}`,
     `adresse: ${address}`,
     `num telephone: ${phone}`,
+    `Date souhaitée de préparation: ${formatCustomOrderDate(requestedDate)}`,
     '',
     '━━━━━━━━━━━━━━━━',
     'Merci pour votre commande!',
   ].join('\n');
 }
 
-function buildCartWhatsAppMessage(name, address, phone) {
+function buildCartWhatsAppMessage(name, address, phone, requestedDate) {
   const lines = cart.map((item) => {
     const variant = getVariantById(item.id);
     if (!variant) return null;
@@ -732,6 +734,7 @@ function buildCartWhatsAppMessage(name, address, phone) {
     `nom: ${name}`,
     `adresse: ${address}`,
     `num telephone: ${phone}`,
+    `Date souhaitée de préparation: ${formatCustomOrderDate(requestedDate)}`,
     '',
     '━━━━━━━━━━━━━━━━',
     'Merci pour votre commande!',
@@ -744,16 +747,17 @@ orderForm.addEventListener('submit', (e) => {
   const name = document.getElementById('orderName').value.trim();
   const address = document.getElementById('orderAddress').value.trim();
   const phone = document.getElementById('orderPhone').value.trim();
+  const requestedDate = orderRequestedDate.value;
 
   let message;
 
   if (orderMode.value === 'cart') {
     if (cart.length === 0) return;
-    message = buildCartWhatsAppMessage(name, address, phone);
+    message = buildCartWhatsAppMessage(name, address, phone, requestedDate);
   } else {
     const variant = getVariantById(orderProductId.value);
     if (!variant) return;
-    message = buildWhatsAppMessage(variant, Number(orderQty.value), name, address, phone);
+    message = buildWhatsAppMessage(variant, Number(orderQty.value), name, address, phone, requestedDate);
   }
 
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
@@ -789,3 +793,4 @@ window.addEventListener('scroll', () => {
 initCustomOrder();
 initProductCards();
 updateCartUI();
+orderRequestedDate.min = new Date().toISOString().split('T')[0];
