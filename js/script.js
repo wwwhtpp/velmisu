@@ -18,17 +18,17 @@ const sizes = [
 // Edit name, description, images, and prices here
 const products = [
   {
-    id: 'cocoa',
-    name: 'Cacao Classique',
-    description: 'La recette originale italienne — mascarpone crémeux, espresso intense et cacao amer.',
+    id: 'cacoa',
+    name: 'Classico',
+    description: 'La recette originale italienne mascarpone crémeux, espresso intense et cacao amer.',
     tag: 'Best-seller',
     available: true,
     images: ['img_cacao.jpg'],
     sizes: {
       small:  { price: 30,  available: true },
-      medium: { price: 45,  available: true },
-      large:  { price: 65,  available: true },
-      xlarge: { price: 95,  available: true },
+      medium: { price: 200,  available: true },
+      large:  { price: 400,  available: true },
+      xlarge: { price: 500,  available: true },
     },
   },
   {
@@ -40,27 +40,27 @@ const products = [
     images: ['img_lotus.jpg'],
     sizes: {
       small:  { price: 35,  available: true },
-      medium: { price: 48,  available: true },
-      large:  { price: 68,  available: true },
-      xlarge: { price: 98,  available: true },
+      medium: { price: 250,  available: true },
+      large:  { price: 450,  available: true },
+      xlarge: { price: 600,  available: true },
     },
   },
   {
     id: 'lemon',
-    name: 'Citron',
+    name: 'lemon',
     description: 'Crème mascarpone légèrement acidulée, zeste de citron frais et biscuit imbibé au limoncello.',
     tag: 'Fraîcheur',
     available: true,
     images: ['img_lemon.jpg'],
     sizes: {
       small:  { price: 35,  available: true },
-      medium: { price: 48,  available: true },
-      large:  { price: 68,  available: true },
-      xlarge: { price: 98,  available: true },
+      medium: { price: 250,  available: true },
+      large:  { price: 450,  available: true },
+      xlarge: { price: 600,  available: true },
     },
   },
   {
-    id: 'chocolate',
+    id: 'chocolat',
     name: 'Chocolat',
     description: 'Chocolat noir 70%, ganache onctueuse et double dose de cacao pour les amateurs.',
     tag: 'Intense',
@@ -69,8 +69,8 @@ const products = [
     sizes: {
       small:  { price: 35,  available: true },
       medium: { price: 200, available: true },
-      large:  { price: 400, available: true },
-      xlarge: { price: 500, available: true },
+      large:  { price: 450, available: true },
+      xlarge: { price: 600, available: true },
     },
   },
 ];
