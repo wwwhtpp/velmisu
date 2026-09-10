@@ -8,7 +8,8 @@ const CART_STORAGE_KEY = 'velmisu_cart';
 
 // ── FORMAT LABELS ─────────────────────────────
 const sizes = [
-  { id: 'small', name: 'Petit' },
+  { id: 'small', name: 'Mini' },
+  { id: 'petit', name: 'Petit' },
   { id: 'medium', name: 'Moyen' },
   { id: 'large', name: 'Grand' },
   { id: 'xlarge', name: 'Extra Large' },
@@ -26,6 +27,7 @@ const products = [
     images: ['img_cacao.jpg'],
     sizes: {
       small:  { price: 30,  available: true },
+      petit:  { price: 100, available: true },
       medium: { price: 200,  available: true },
       large:  { price: 400,  available: true },
       xlarge: { price: 500,  available: true },
@@ -40,6 +42,7 @@ const products = [
     images: ['img_lotus.jpg'],
     sizes: {
       small:  { price: 35,  available: true },
+      petit:  { price: 100, available: true },
       medium: { price: 250,  available: true },
       large:  { price: 450,  available: true },
       xlarge: { price: 600,  available: true },
@@ -54,6 +57,7 @@ const products = [
     images: ['img_lemon.jpg'],
     sizes: {
       small:  { price: 35,  available: true },
+      petit:  { price: 100, available: true },
       medium: { price: 250,  available: true },
       large:  { price: 450,  available: true },
       xlarge: { price: 600,  available: true },
@@ -68,6 +72,7 @@ const products = [
     images: ['img_cacao.jpg'],
     sizes: {
       small:  { price: 35,  available: true },
+      petit:  { price: 100, available: true },
       medium: { price: 200, available: true },
       large:  { price: 450, available: true },
       xlarge: { price: 600, available: true },
