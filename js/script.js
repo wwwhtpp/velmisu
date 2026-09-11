@@ -42,7 +42,7 @@ const products = [
     images: ['img_lotus.jpg'],
     sizes: {
       small:  { price: 35,  available: true },
-      petit:  { price: 100, available: true },
+      petit:  { price: 150, available: true },
       medium: { price: 250,  available: true },
       large:  { price: 450,  available: true },
       xlarge: { price: 600,  available: true },
@@ -57,7 +57,7 @@ const products = [
     images: ['img_lemon.jpg'],
     sizes: {
       small:  { price: 35,  available: true },
-      petit:  { price: 100, available: true },
+      petit:  { price: 150, available: true },
       medium: { price: 250,  available: true },
       large:  { price: 450,  available: true },
       xlarge: { price: 600,  available: true },
@@ -72,7 +72,7 @@ const products = [
     images: ['img_cacao.jpg'],
     sizes: {
       small:  { price: 35,  available: true },
-      petit:  { price: 100, available: true },
+      petit:  { price: 150, available: true },
       medium: { price: 200, available: true },
       large:  { price: 450, available: true },
       xlarge: { price: 600, available: true },
