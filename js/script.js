@@ -66,7 +66,7 @@ const products = [
   {
     id: 'chocolat',
     name: 'Chocolat',
-    description: 'Chocolat noir 70%, ganache onctueuse et double dose de cacao pour les amateurs.',
+    description: 'Chocolat noir, ganache onctueuse et double dose de cacao pour les amateurs.',
     tag: 'Intense',
     available: true,
     images: ['img_cacao.jpg'],
